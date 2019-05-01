@@ -1,0 +1,2 @@
+class PostPoem < ApplicationRecord
+end
