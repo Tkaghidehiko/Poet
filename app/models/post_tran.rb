@@ -1,0 +1,2 @@
+class PostTran < ApplicationRecord
+end
