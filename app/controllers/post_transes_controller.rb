@@ -1,0 +1,2 @@
+class PostTransesController < ApplicationController
+end
