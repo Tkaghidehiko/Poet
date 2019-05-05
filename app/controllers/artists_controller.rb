@@ -28,11 +28,11 @@ class ArtistsController < ApplicationController
     end
 
     def update
-    	@artist = artist.find(params[:id])
+    	@artist = Atist.find(params[:id])
     	if @artist.update(artist_params)
     		redirect_to artist_path(@artist.id), notice: 'アーティスト名が編集されました。'
     	else
-    		render :index, notice: 'アーティストの削除に失敗。'
+    		render :index, notice: 'アーティストの編集に失敗。'
     	end
     end
 
