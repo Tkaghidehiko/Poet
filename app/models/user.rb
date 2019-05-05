@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :artists, dependent: :destroy
+  has_many :songs, dependent: :destroy
+  has_many :post_poems, dependent: :destroy
+  has_many :post_trans, dependent: :destroy
+  has_many :fovorites, dependent: :destroy
 end
