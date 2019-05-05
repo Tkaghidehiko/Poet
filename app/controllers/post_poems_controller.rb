@@ -12,9 +12,9 @@ class PostPoemsController < ApplicationController
     	@poem = PostPoem.new(post_poem_params)
     	@poem.user_id = @current_user.id
     	if @poem.save
-    		redirect_to new_post_trans_path, notice: アーティスト作成に成功しました。
+    		redirect_to new_post_trans_path, notice: 歌詞作成に成功しました。
     	else
-    		redirect_to new_post_poem_path, notice: アーティストの作成に失敗しました。
+    		redirect_to new_post_poem_path, notice: 歌詞作成に失敗しました。
     	end
 
     end
@@ -32,18 +32,18 @@ class PostPoemsController < ApplicationController
     	@poem = PostPoem.find(params[:id])
     	@poem.user_id = @current_user.id
     	if @poem.update(post_poem_params)
-    		redirect_to post_poem_path(@post_poem.id), notice: 'アーティスト名が編集されました。'
+    		redirect_to post_poem_path(@post_poem.id), notice: '歌詞内容が編集されました。'
     	else
-    		render :index, notice: 'アーティストの削除に失敗。'
+    		render :index, notice: '歌詞内容の編集に失敗。'
     	end
     end
 
     def destroy
     	poem = PostPoem.find(params[:id])
     	if poem.delete
-    	redirect_to post_poems_path, notice: 'アーティストは削除されました。'
+    	redirect_to post_poems_path, notice: '歌詞は削除されました。'
     	else
-    		render :index, notice: 'アーティストの削除に失敗。'
+    		render :index, notice: '歌詞の削除に失敗。'
     	end
     end
 

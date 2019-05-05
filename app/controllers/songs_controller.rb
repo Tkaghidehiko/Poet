@@ -2,52 +2,52 @@ class SongsController < ApplicationController
 
 
     def index
-    	@artists = Artist.all.order(created_at: :desc)
+    	@songs = Song.all.order(created_at: :desc)
     end
  	def new
- 		@artist = Artist.new
+ 		@song = Song.new
     end
 
     def create
-    	@artist = Artist.new(artist_params)
-    	if @artist.save
-    		redirect_to new_song_path, notice: アーティスト作成に成功しました。
+    	@song = Song.new(song_params)
+    	if @song.save
+    		redirect_to new_song_path, notice: 曲の作成に成功しました。
     	else
-    		redirect_to new_artist_path, notice: アーティストの作成に失敗しました。
+    		redirect_to new_song_path, notice: 曲の作成に失敗しました。
     	end
 
     end
 
 
     def show
-    	@artist = Artist.find(params[:id])
+    	@song = Song.find(params[:id])
     end
 
     def edit
-    	@artist = Artist.find(params[:id])
+    	@song = Song.find(params[:id])
     end
 
     def update
-    	@artist = artist.find(params[:id])
-    	if @artist.update(artist_params)
-    		redirect_to artist_path(@artist.id), notice: 'アーティスト名が編集されました。'
+    	@song = Song.find(params[:id]
+    	if @song.update(song_params)
+    		redirect_to song_path(@song.id), notice: '曲名が編集されました。'
     	else
-    		render :index, notice: 'アーティストの削除に失敗。'
+    		render :index, notice: '曲の編集に失敗。'
     	end
     end
 
     def destroy
-    	artist = Artist.find(params[:id])
-    	if artist.delete
-    	redirect_to artists_path, notice: 'アーティストは削除されました。'
+    	song = Song.find(params[:id])
+    	if song.delete
+    	redirect_to songs_path, notice: '曲は削除されました。'
     	else
-    		render :index, notice: 'アーティストの削除に失敗。'
+    		render :index, notice: '曲の削除に失敗。'
     	end
     end
 
     private
-    def artist_params
-    	params.require(:artist).permit(:artist_name)
+    def song_params
+    	params.require(:song).permit(:song_name)
     end
 
 end
