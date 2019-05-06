@@ -3,21 +3,20 @@
 					<thead>
 						<tr>
 							<th></th>
-							<th>Title</th>
-							<th>Opinion</th>
+							<th>Song</th>
+							<th>Artist</th>
 						</tr>
 					</thead>
 					<tbody><!--
-						<#% if @books.present? %>
-							<#% @books.each do |book| %>
+						<#% if @artists.present? %>
+							<#% @artists.each do |artist| %>
 								<tr>
-									<td><%#= attachment_image_tag book.user, :profile_image, :size => "35x35", format: 'jpeg', fallback: "no_image1.jpg" %></td>
-									<td><%#= link_to book_path(book.id), class: "book_#{book.id}" do %>
-										<%#= book.title %>
+									<td><%#= link_to artist_path(artist.id), class: "artist_#{artist.id}" do %>
+										<%#= artist.name %>
 										<#% end %>
 									</td>
 
-									<td><%#= book.body %></td>
+									<td><%#= artist.body %></td>
 								</tr>
 							<#% end %>
 						<#% end %> -->

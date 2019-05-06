@@ -6,5 +6,5 @@ root to: 'news#index'
 resources :artists, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 resources :songs, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 resources :post_poems, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-resources :post_transes, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+resources :post_trans, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 end

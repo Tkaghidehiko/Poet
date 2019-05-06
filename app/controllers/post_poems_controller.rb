@@ -11,11 +11,12 @@ class PostPoemsController < ApplicationController
     def create
     	@poem = PostPoem.new(post_poem_params)
     	@poem.user_id = @current_user.id
-    	if @poem.save
-    		redirect_to new_post_trans_path, notice: 歌詞作成に成功しました。
-    	else
-    		redirect_to new_post_poem_path, notice: 歌詞作成に失敗しました。
-    	end
+    	# if
+    		@poem.save
+    		redirect_to new_post_tran_path, notice: "歌詞作成に成功しました。"
+    	# else
+    	# 	redirect_to new_post_poem_path, notice: "歌詞作成に失敗しました。"
+    	# end
 
     end
 
@@ -49,6 +50,6 @@ class PostPoemsController < ApplicationController
 
     private
     def post_poem_params
-    	params.require(:postpoem).permit(:postpoem_name)
+    	params.require(:post_poem).permit(:poem)
     end
 end
