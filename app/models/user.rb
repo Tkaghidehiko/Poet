@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :artists, dependent: :destroy
   has_many :songs, through: :artists, dependent: :destroy
   has_many :post_poems, through: :songs, dependent: :destroy
-  has_many :post_trans, through: :post_poems, dependent: :destroy
-  has_many :songs, through: :favorites,dependent: :destroy
+  has_many :sentences, through: :post_poems, dependent: :destroy
+  has_many :post_trans, through: :sentences, dependent: :destroy
+
+  has_many :favorites, dependent: :destroy
 end
