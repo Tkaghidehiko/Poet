@@ -1,5 +1,5 @@
 class PostTran < ApplicationRecord
-	belongs_to :sentense
+	belongs_to :post_poem
 	belongs_to :user
 
 	has_many :favorites, dependent: :destroy
