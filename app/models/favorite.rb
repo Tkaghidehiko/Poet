@@ -1,6 +1,5 @@
 class Favorite < ApplicationRecord
-	belongs_to :user
-	has_many :songs, dependent: :destroy
-	has_many :artists, dependent: :destroy
-	has_many :post_trans, dependen: :destroy
+	belongs_to :user, foreign_key: 'user_id'
+	belongs_to :song, foreign_key: 'song_id'
+	belongs_to :post_tran,  foreign_key: 'tran_id'
 end
