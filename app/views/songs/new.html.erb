@@ -1,6 +1,6 @@
 <nav aria-label="パンくずリスト">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">アーティスト登録</a></li>
+    <li class="breadcrumb-item"><a><%= link_to "アーティスト登録", new_artist_path %></a></li>
     <li class="breadcrumb-item active" aria-current="page">曲の登録</li>
   </ol>
 </nav>
@@ -32,7 +32,7 @@
                     </div>
 
                     <!-- poem -->
-                    <%= f.fields_for :post_poems do |poem| %>
+                    <%= f.fields_for(@kasi) do |poem| %>
                         <%= poem.label :センテンス %>
                         <br>
                         <%= poem.text_field :poem, size: "70x2" %>

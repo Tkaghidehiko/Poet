@@ -6,14 +6,14 @@ class SongsController < ApplicationController
     end
  	def new
  		@song = Song.new
-        @song.post_poems.build
+        @kasi = @song.post_poems.build
     end
 
     def create
     	@song = Song.new(song_params)
     	# if
     	@song.save
-    	redirect_to post_poems_path, notice: "曲の作成に成功しました。"
+    	redirect_to song_path(@song)
     	# else
     	# 	redirect_to new_song_path, notice: 曲の作成に失敗しました。
     	# end
