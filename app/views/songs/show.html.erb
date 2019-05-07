@@ -1,0 +1,7 @@
+<% if @messages.present? %>
+	<% @poems.each do |poem| %>
+		<%= link_to new_post_trans_path do %>
+		<%= poem.poem %>
+		<% end %>
+	<% end %>
+<% end %>
