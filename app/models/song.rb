@@ -7,4 +7,5 @@ class Song < ApplicationRecord
 	has_many :post_trans, through: :post_poem, dependent: :destroy
 
 	has_many :favorites, through: :users, dependent: :destroy
+
 end

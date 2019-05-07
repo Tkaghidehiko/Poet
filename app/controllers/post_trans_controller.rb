@@ -11,7 +11,7 @@ class PostTransController < ApplicationController
     	@tran = PostTran.new(post_tran_params)
     	# if
     	@tran.save
-    	redirect_to new_post_poem_path, notice: "翻訳の作成に成功しました。"
+    	redirect_to post_trans_path, notice: "翻訳の作成に成功しました。"
     	# else
     	# 	redirect_to new_tran_path, notice: 曲の作成に失敗しました。
     	# end
@@ -30,7 +30,8 @@ class PostTransController < ApplicationController
     def update
     	@tran = PostTran.find(params[:id])
     	if @tran.update(post_tran_params)
-			redirect_to post_tran_path(@tran.id), notice: '翻訳内容が編集されました。'
+			# redirect_to post_tran_path(@tran.id), notice: '翻訳内容が編集されました。'
+            redirect_to post_trans_path, notice: '翻訳内容が編集されました。'
     	else
 			render :index, notice: '翻訳の編集に失敗。'
     	end

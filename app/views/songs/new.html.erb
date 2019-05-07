@@ -1,7 +1,7 @@
 <nav aria-label="パンくずリスト">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">アーティスト登録</a></li>
-    <li class="breadcrumb-item active" aria-current="page">曲名登録</li>
+    <li class="breadcrumb-item active" aria-current="page">曲の登録</li>
   </ol>
 </nav>
 
@@ -30,9 +30,23 @@
                         <%= f.text_field :album_name, size: "35x2" %>
                       </div>
                     </div>
+
+                    <!-- poem -->
+                    <%= f.fields_for :post_poems do |poem| %>
+                        <%= poem.label :センテンス %>
+                        <br>
+                        <%= poem.text_field :poem, size: "70x2" %>
+                    <% end %>
+
+                    <div class="links">
+                      <%= link_to_add_association "タグを追加", f, :post_poems %>
+                    </div>
+                    <!-- ポエム -->
+
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-12 actions">
                         <%= f.submit "create song", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
                       </div>
                     </div>
                 <% end %>
+
