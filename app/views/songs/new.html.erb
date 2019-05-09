@@ -5,7 +5,7 @@
   </ol>
 </nav>
 
-                <%= form_for(@song) do |f| %>
+                <%= form_for [@artist, @song], :url => {:action => :create} do |f| %>
                     <% if @song.errors.any? %>
                       <div id="error_explanation">
                         <h3><%= pluralize(@song.errors.count, "error") %> invalidated your post.</h3>

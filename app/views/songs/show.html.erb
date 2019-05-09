@@ -1,0 +1,14 @@
+<h1>曲名</h1>
+<%= @song.song_name %>
+<br>
+<br>
+<h2>アルバム名</h2>
+<%= @song.album_name %>
+<br>
+<br>
+<h3>歌詞</h3>
+<% @song.post_poems.each do |poem| %>
+<br>
+	<%= poem.poem %>
+	<br>
+<% end %>
