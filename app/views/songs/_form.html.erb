@@ -1,11 +1,6 @@
-<nav aria-label="パンくずリスト">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a><%= link_to "アーティスト登録", new_artist_path %></a></li>
-    <li class="breadcrumb-item active" aria-current="page">曲の登録</li>
-  </ol>
-</nav>
+                <%= form_for(@song) do |f| %>
 
-                <%= form_for [@artist, @song], :url => {:action => :create} do |f| %>
+                    <!-- エラー -->
                     <% if @song.errors.any? %>
                       <div id="error_explanation">
                         <h3><%= pluralize(@song.errors.count, "error") %> invalidated your post.</h3>
@@ -16,38 +11,41 @@
                         </ul>
                       </div>
                     <% end %>
+                    <!-- エラー -->
+
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group has-icon">
-                        <h5>曲名</h5>
+                          <%= f.label :song_name, "曲名" %>
                           <%= f.text_field :song_name, size: "36" %>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <h5>アルバム名</h5>
+                        <%= f.label :album_name, "アルバム タイトル" %>
                         <%= f.text_field :album_name, size: "35x2" %>
                       </div>
                     </div>
 
-                    <!-- poem -->
-                    <%= f.fields_for :post_poems do |poem| %>
-                        <%= poem.label :センテンス %>
-                        <br>
-                        <%= poem.text_field :poem, size: "70x2" %>
-                    <% end %>
 
-                    <div class="links">
-                      <%= link_to_add_association "タグを追加", f, :post_poems %>
-                    </div>
-                    <!-- ポエム -->
+                          <!-- poem -->
+                          <h3>Poems</h3>
+
+                          <%= f.fields_for :post_poems do |poem| %>
+                            <%= render 'task_fields', f: poem %>
+                          <% end %>
+
+                          <div class="links">
+                            <%= link_to_add_association "タグを追加", f, :post_poems %>
+                          </div>
+                          <!-- ポエム -->
+
+
 
                     <div class="row">
                       <div class="col-md-12 actions">
-                        <%= f.submit "create song", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
+                      <%= f.submit "create song", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
                       </div>
                     </div>
                 <% end %>
-
-

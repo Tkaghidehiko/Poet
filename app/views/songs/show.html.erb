@@ -1,3 +1,4 @@
+
 <h1>曲名</h1>
 <%= @song.song_name %>
 <br>
@@ -7,8 +8,12 @@
 <br>
 <br>
 <h3>歌詞</h3>
-<% @song.post_poems.each do |poem| %>
-<br>
-	<%= poem.poem %>
-	<br>
+
+
+<% if @messages.present? %>
+	<% @song.post_poems.each do |poem| %>
+		<%= link_to new_post_trans_path do %>
+		<%= poem.poem %>
+		<% end %>
+	<% end %>
 <% end %>

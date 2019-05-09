@@ -6,7 +6,7 @@ class SongsController < ApplicationController
     end
  	def new
  		@song = Song.new
-        @song.post_poems.build
+        @kasi = @song.post_poems.build
     end
 
     def create
