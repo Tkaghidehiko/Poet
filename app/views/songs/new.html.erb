@@ -5,7 +5,49 @@
   </ol>
 </nav>
 
-<h1>New Song</h1>
-<%= render 'form', song: @song %>
-<%= link_to 'Back', new_artist_path %>
+                <%= form_for [@artist, @song], :url => {:action => :create} do |f| %>
+                    <% if @song.errors.any? %>
+                      <div id="error_explanation">
+                        <h3><%= pluralize(@song.errors.count, "error") %> invalidated your post.</h3>
+                        <ul>
+                        <% @song.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group has-icon">
+                        <h5>曲名</h5>
+                          <%= f.text_field :song_name, size: "36" %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h5>アルバム名</h5>
+                        <%= f.text_field :album_name, size: "35x2" %>
+                      </div>
+                    </div>
+
+                    <!-- poem -->
+                    <%= f.fields_for :post_poems do |poem| %>
+                        <%= poem.label :センテンス %>
+                        <br>
+                        <%= poem.text_field :poem, size: "70x2" %>
+                    <% end %>
+
+                    <div class="links">
+                      <%= link_to_add_association "タグを追加", f, :post_poems %>
+                    </div>
+                    <!-- ポエム -->
+
+                    <div class="row">
+                      <div class="col-md-12 actions">
+                        <%= f.submit "create song", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
+                      </div>
+                    </div>
+                <% end %>
+
 

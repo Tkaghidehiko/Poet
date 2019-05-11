@@ -10,12 +10,12 @@ class ArtistsController < ApplicationController
 
     def create
     	@artist = Artist.new(artist_params)
-    	# if
-        @artist.save
-    	redirect_to new_song_path(@artist), notice: "アーティスト作成に成功しました。"
-    	# else
-    	# 	redirect_to new_artist_path, notice: "アーティストの作成に失敗しました。"
-    	# end
+    	if @artist.save
+    	redirect_to new_artist_song_path(@artist), notice: "アーティスト作成に成功しました。"
+    	else
+    	render :new, notice: "アーティストの作成に失敗しました。"
+    	end
+
 
     end
 

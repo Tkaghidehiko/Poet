@@ -11,12 +11,13 @@ class SongsController < ApplicationController
 
     def create
     	@song = Song.new(song_params)
-    	# if
-    	@song.save
-    	redirect_to song_path(@song)
-    	# else
-    	# 	redirect_to new_song_path, notice: 曲の作成に失敗しました。
-    	# end
+
+        if@song.save!
+    	redirect_to song_path(@song), notice: "曲の作成に成功しました。"
+    	else
+        @song.post_poems.build
+    	render :new, notice: "曲の作成に失敗しました。"
+    	end
 
     end
 
@@ -49,7 +50,7 @@ class SongsController < ApplicationController
 
     private
     def song_params
-    	params.require(:song).permit(:song_name, :album_name, post_poems_attributes: [:id, :poem, :_destroy])
+    	params.require(:song).permit(:artist_id, :song_name, :album_name, post_poems_attributes: [:id, :poem, :song_id, :_destroy])
     end
 
 end
