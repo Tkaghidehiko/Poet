@@ -1,13 +1,14 @@
-<nav aria-label="パンくずリスト">
-  <ol class="breadcrumb mb-1">
-    <li class="breadcrumb-item"><a href="#">アーティスト登録</a></li>
-    <li class="breadcrumb-item"><a href="#">曲名登録</a></li>
-    <li class="breadcrumb-item active" aria-current="page">詩を記入</li>
-  </ol>
-</nav>
+
+               <%= @song.song_name %>
 
 
-                <%= form_for(@tran) do |f| %>
+               <%= @poem.poem %>
+
+
+
+
+
+                <%= form_for [@poem, @tran] do |f| %>
                     <% if @tran.errors.any? %>
                       <div id="error_explanation">
                         <h3><%= pluralize(@tran.errors.count, "error") %> invalidated your post.</h3>
