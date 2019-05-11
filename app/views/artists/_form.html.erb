@@ -1,0 +1,43 @@
+                <%= form_for(@artist) do |f| %>
+                <%#= form_for [@artist, @artist, url: { controller: :logins, action: :new }] do |f| %>
+                    <!-- エラー -->
+                    <% if @artist.errors.any? %>
+                      <div id="error_explanation">
+                        <h3><%= pluralize(@artist.errors.count, "error") %> invalidated your post.</h3>
+                        <ul>
+                        <% @artist.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <!-- エラー -->
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group has-icon">
+                          <%= f.label :artist_name, "Artist Name" %>
+                          <%= f.text_field :artist_name, size: "36" %>
+                        </div>
+                      </div>
+
+                          <!-- song -->
+                          <h3>songs</h3>
+
+                          <%= f.fields_for :songs do |song| %>
+                            <%= render 'song_fields', f: song %>
+                          <% end %>
+
+                          <div class="links">
+                            <%= link_to_add_association "タグを追加", f, :songs %>
+                          </div>
+                          <!-- ポエム -->
+
+
+
+                    <div class="row">
+                      <div class="col-md-12 actions">
+                      <%= f.submit "create artist", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
+                      </div>
+                    </div>
+                <% end %>
