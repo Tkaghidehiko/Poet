@@ -1,27 +1,19 @@
 class PostTransController < ApplicationController
 
-    def index
-    	@trans = PostTran.all.order(created_at: :desc)
-    end
- 	def new
- 		@tran = PostTran.new
-    end
 
     def create
-    	@tran = PostTran.new(post_tran_params)
-    	# if
-    	@tran.save
-    	redirect_to post_trans_path, notice: "翻訳の作成に成功しました。"
-    	# else
-    	# 	redirect_to new_tran_path, notice: 曲の作成に失敗しました。
-    	# end
+        poem = PostPoem.find(params[:post_poem_id])
+        tran.user_id = current_user.id
+    	tran = PostTran.new(post_tran_params)
+        tran.post_poem_id = post_poem.id
+    	if @tran.save
+    	redirect_to post_poem(@poem), notice: "翻訳の作成に成功しました。"
+    	else
+    		render :new, notice: "曲の作成に失敗しました。"
+    	end
 
     end
 
-
-    def show
-    	@tran = PostTran.find(params[:id])
-    end
 
     def edit
     	@tran = PostTran.find(params[:id])
@@ -48,7 +40,8 @@ class PostTransController < ApplicationController
 
     private
     def post_tran_params
-    	params.require(:post_tran).permit(:song_translate)
+    	params.require(:post_tran).permit(:user_id, :post_poem_id, :song_translate)
     end
+
 
 end

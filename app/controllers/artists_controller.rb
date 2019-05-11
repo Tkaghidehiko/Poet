@@ -12,14 +12,25 @@ class ArtistsController < ApplicationController
     end
 
     def create
-        @artist= Artist.new(artist_params)
-        if @artist.save!
-         redirect_to song_path(@song.id)
-        else
-          @song = @srtist.songs.build
-          @poem = @song.post_poems.build
-          render :new
-        end
+
+        # @artist= Artist.new(artist_params)
+        # if @artist.save!
+        #  redirect_to song_path(@song.id)
+        # else
+        #   @song = @srtist.songs.build
+        #   @poem = @song.post_poems.build
+        #   render :new
+        # end
+
+    	@artist = Artist.new(artist_params)
+    	if @artist.save
+    	redirect_to new_artist_song_path(@artist), notice: "アーティスト作成に成功しました。"
+    	else
+    	render :new, notice: "アーティストの作成に失敗しました。"
+    	end
+
+
+
     end
 
 
