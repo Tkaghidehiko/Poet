@@ -2,13 +2,15 @@ class PostTransController < ApplicationController
 
 
     def create
-        poem = PostPoem.find(params[:post_poem_id])
+        @poem = PostPoem.find(params[:post_poem_id])
     	@tran = PostTran.new(post_tran_params)
-        @tran.post_poem_id = post_poem.id
     	if @tran.save
     	redirect_to post_poem(@poem), notice: "翻訳の作成に成功しました。"
     	else
-    		render :new, notice: "曲の作成に失敗しました。"
+            @song = @poem.song
+            @poem = PostPoem.find(params[:post_poem_id])
+            @tran = @poem.post_trans.new
+    		render template: "post_poems/show", notice: "曲の作成に失敗しました。"
     	end
 
     end

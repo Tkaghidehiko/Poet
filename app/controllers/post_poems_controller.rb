@@ -9,7 +9,8 @@ class PostPoemsController < ApplicationController
     def show
         @song = Song.find(params[:id])
         @poem = PostPoem.find(params[:id])
-        @tran = PostTran.new
+        # @tran = PostTran.new
+        @tran = @poem.post_trans.new
     end
 
     def edit
