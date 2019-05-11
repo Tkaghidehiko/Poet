@@ -7,8 +7,12 @@
 <br>
 <br>
 <h3>歌詞</h3>
+
 <% @song.post_poems.each do |poem| %>
 <br>
-	<%= poem.poem %>
-	<br>
+	<%= link_to post_poem_path(@song.id) do %>
+		<%= poem.poem %>
+	<% end %>
+
+<br>
 <% end %>
