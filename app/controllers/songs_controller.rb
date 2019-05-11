@@ -7,10 +7,12 @@ class SongsController < ApplicationController
  	def new
  		@song = Song.new
         @poem = @song.post_poems.build
+
     end
 
     def create
     	@song = Song.new(song_params)
+
 
         if@song.save!
     	redirect_to song_path(@song), notice: "曲の作成に成功しました。"

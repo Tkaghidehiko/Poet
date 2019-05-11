@@ -16,6 +16,7 @@ class ArtistsController < ApplicationController
     	render :new, notice: "アーティストの作成に失敗しました。"
     	end
 
+
     end
 
 

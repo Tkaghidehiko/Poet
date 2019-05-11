@@ -20,27 +20,33 @@ ActiveRecord::Schema.define(version: 2019_05_06_040544) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "song_id"
-    t.integer "post_trans_id"
-    t.integer "user_id"
+    t.integer "song_id_id"
+    t.integer "post_tran_id_id"
+    t.integer "user_id_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_tran_id_id"], name: "index_favorites_on_post_tran_id_id"
+    t.index ["song_id_id"], name: "index_favorites_on_song_id_id"
+    t.index ["user_id_id"], name: "index_favorites_on_user_id_id"
   end
 
   create_table "post_poems", force: :cascade do |t|
-    t.integer "song_id"
+    t.integer "song_id_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "poem"
+    t.index ["song_id_id"], name: "index_post_poems_on_song_id_id"
   end
 
   create_table "post_trans", force: :cascade do |t|
     t.text "song_translate"
-    t.integer "post_poem_id"
-    t.integer "user_id"
+    t.integer "post_poem_id_id"
+    t.integer "user_id_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_poem_id_id"], name: "index_post_trans_on_post_poem_id_id"
+    t.index ["user_id_id"], name: "index_post_trans_on_user_id_id"
   end
 
   create_table "songs", force: :cascade do |t|
