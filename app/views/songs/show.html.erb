@@ -9,11 +9,12 @@
 <br>
 <h3>歌詞</h3>
 
-
-<% if @messages.present? %>
-	<% @song.post_poems.each do |poem| %>
-		<%= link_to new_post_trans_path do %>
+<% @song.post_poems.each do |poem| %>
+<br>
+	<%= link_to post_poem_path(@song.id) do %>
 		<%= poem.poem %>
-		<% end %>
 	<% end %>
+
+<br>
+
 <% end %>

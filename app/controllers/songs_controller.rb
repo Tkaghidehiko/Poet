@@ -6,7 +6,8 @@ class SongsController < ApplicationController
     end
  	def new
  		@song = Song.new
-        @kasi = @song.post_poems.build
+        @poem = @song.post_poems.build
+
     end
 
     def create
@@ -24,6 +25,7 @@ class SongsController < ApplicationController
 
     def show
     	@song = Song.find(params[:id])
+        @poem = @song.post_poems
     end
 
     def edit
