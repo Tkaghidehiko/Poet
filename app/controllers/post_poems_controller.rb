@@ -19,9 +19,9 @@ class PostPoemsController < ApplicationController
 
     def update
     	@poem = PostPoem.find(params[:id])
-    	@poem.user_id = @current_user.id
     	if @poem.update(post_poem_params)
-    		redirect_to post_poem_path(@post_poem.id), notice: '歌詞内容が編集されました。'
+            @song = @poem.song
+    		redirect_to song_path(@song), notice: '歌詞内容が編集されました。'
     	else
     		render :index, notice: '歌詞内容の編集に失敗。'
     	end
@@ -42,5 +42,9 @@ class PostPoemsController < ApplicationController
             post_poems_attributes: [:id, :poem, :song_id, :_destroy, 
                 post_trans_attributes: [:id, :post_poem_id, :song_translate, :_destroy]])
     end
+
+    def post_poem_params
+        params.require(:post_poem).permit(:id, :poem, :song_id, :_destroy,
+                post_trans_attributes: [:id, :post_poem_id, :song_translate, :_destroy])
 
 end
