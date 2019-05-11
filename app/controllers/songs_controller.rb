@@ -13,7 +13,6 @@ class SongsController < ApplicationController
     def create
     	@song = Song.new(song_params)
 
-
         if@song.save!
     	redirect_to song_path(@song), notice: "曲の作成に成功しました。"
     	else

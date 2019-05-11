@@ -5,7 +5,6 @@
   </ol>
 </nav>
 
-
                 <%= form_for [@artist, @song], :url => {:action => :create} do |f| %>
                     <% if @song.errors.any? %>
                       <div id="error_explanation">
