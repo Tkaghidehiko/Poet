@@ -57,7 +57,8 @@ class ArtistsController < ApplicationController
     private
     def artist_params
         params.require(:artist).permit(:artist_name,
-                                        songs_attributes: [:id, :album_name, :song_name, :_destroy,
-                                        post_poems_attributes: [:id, :poem, :_destroy]])
+                                        songs_attributes: [:id, :artist_id, :album_name, :song_name, :_destroy,
+                                        post_poems_attributes: [:id, :song_id, :poem, :_destroy,
+                                            post_trans_attributes: [:id, :post_poem_id, :song_translate]]])
     end
 end

@@ -3,9 +3,8 @@ class PostTransController < ApplicationController
 
     def create
         poem = PostPoem.find(params[:post_poem_id])
-        tran.user_id = current_user.id
-    	tran = PostTran.new(post_tran_params)
-        tran.post_poem_id = post_poem.id
+    	@tran = PostTran.new(post_tran_params)
+        @tran.post_poem_id = post_poem.id
     	if @tran.save
     	redirect_to post_poem(@poem), notice: "翻訳の作成に成功しました。"
     	else

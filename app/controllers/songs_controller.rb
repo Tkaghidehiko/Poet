@@ -7,6 +7,7 @@ class SongsController < ApplicationController
  	def new
  		@song = Song.new
         @poem = @song.post_poems.build
+        @tran = @poem.post_trans.build
 
     end
 
@@ -52,7 +53,9 @@ class SongsController < ApplicationController
 
     private
     def song_params
-    	params.require(:song).permit(:artist_id, :song_name, :album_name, post_poems_attributes: [:id, :poem, :song_id, :_destroy])
+    	params.require(:song).permit(:artist_id, :song_name, :album_name,
+            post_poems_attributes: [:id, :poem, :song_id, :_destroy,
+                post_trans_attributes: [:id, :post_poem_id, :_destroy, ]])
     end
 
 end
