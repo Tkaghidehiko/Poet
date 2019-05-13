@@ -10,4 +10,9 @@ class Song < ApplicationRecord
 
 	has_many :favorites, dependent: :destroy
 
+
+	validates :song_name, presence: true, uniqueness: true, length: { in: 2..30 }
+
+	validates :album_name, length: { maximum: 60 }
+
 end
