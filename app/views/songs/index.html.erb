@@ -1,4 +1,4 @@
-<%= search_form_for @search do |f| %>
+<%= search_form_for @search_s,:url => {:action => :index} do |f| %>
  <div class="form-group">
 <!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
    <%= f.label :song_name_cont, "Name" %>
@@ -7,15 +7,21 @@
  <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<% if @search_songs.any? %>
- <% @search_songs.each do |result| %>
-   <p><%= result.song_name %></p>
- <% end %>
-<% end %>
+			<% if @search_songs.any? %>
+			 <% @search_songs.each do |result| %>
+
+				 <%= link_to song_path(result.id) do %>
+				   <p><%= result.song_name %></p>
+				   <% end %>
+
+			 <% end %>
+			<% end %>
 
 <!-- %h2= page_entries_info @data
 = paginate @data -->
-<h2>
-	<%= page_entries_info @serch_songs, class: "pagenate" %>
+<h5>
 
-</h2>
+	<%= page_entries_info @search_songs %>
+
+
+</h5>

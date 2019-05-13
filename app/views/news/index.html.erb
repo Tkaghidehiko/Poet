@@ -7,18 +7,18 @@
 							<th>Artist</th>
 						</tr>
 					</thead>
-					<tbody><!--
-						<#% if @artists.present? %>
-							<#% @artists.each do |artist| %>
+					<tbody>
+						<% if @artists.present? %>
+							<% @artists.each do |artist| %>
 								<tr>
-									<td><%#= link_to artist_path(artist.id), class: "artist_#{artist.id}" do %>
-										<%#= artist.name %>
-										<#% end %>
+									<td><%= link_to artist_path(artist.id), class: "artist_#{artist.id}" do %>
+										<%= artist.artist_name %>
+										<% end %>
 									</td>
 
-									<td><%#= artist.body %></td>
+									<td><%= artist.songs.song_name %></td>
 								</tr>
-							<#% end %>
-						<#% end %> -->
+							<% end %>
+						<% end %>
 					</tbody>
 				</table>

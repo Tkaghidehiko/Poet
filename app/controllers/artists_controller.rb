@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
 
     def index
     	@artists = Artist.all.order(created_at: :desc)
-
         @search_a = Artist.ransack(params[:q])
         @search_artists = @search_a.result.page(params[:page])
     end
