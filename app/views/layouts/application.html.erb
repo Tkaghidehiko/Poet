@@ -36,17 +36,21 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">アーティスト</a>
-              <a class="dropdown-item" href="#">曲名</a>
+              <!-- <a class="dropdown-item" href="#">アーティスト</a> -->
+              <%= link_to "Artist", artists_path, class: "dropdown-item" %>
             </div>
           </li>
 
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-          <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
-          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
-        </form>
+<!-- 検索フォーム -->
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <%= search_form_for @search_a, url: artists_path, :html => {:class => "form-inline my-2 my-lg-0"} do |f| %>
+          <dt><%= f.text_field :artist_name_cont ,placeholder: '「アーティスト名」を入力...', class: "form-control mr-sm-2" %></dt>
+          <dd><%= f.submit ("検索") , class: 'btn btn-outline-success my-2 my-sm-0'%></dd>
+          <% end %>
+<!-- 検索フォーム -->
+
       </div>
     </nav>
     <%= yield %>

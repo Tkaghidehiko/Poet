@@ -2,8 +2,12 @@ class SongsController < ApplicationController
 
 
     def index
+        @artist = Artist.find(params[:artist_id])
     	@songs = Song.all.order(created_at: :desc)
+        @search_s = Song.ransack(params[:q])
+        @search_songs = @search_s.result.page(params[:page])
     end
+
  	def new
  		@song = Song.new
         @poem = @song.post_poems.build

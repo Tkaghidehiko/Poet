@@ -1,1 +1,21 @@
+<%= search_form_for @search do |f| %>
+ <div class="form-group">
+<!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+   <%= f.label :song_name_cont, "Name" %>
+   <%= f.search_field :song_name_cont, class: "form-control" %>
+ </div>
+ <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
 
+<% if @search_songs.any? %>
+ <% @search_songs.each do |result| %>
+   <p><%= result.song_name %></p>
+ <% end %>
+<% end %>
+
+<!-- %h2= page_entries_info @data
+= paginate @data -->
+<h2>
+	<%= page_entries_info @serch_songs, class: "pagenate" %>
+
+</h2>
