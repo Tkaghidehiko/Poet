@@ -4,6 +4,7 @@ class PostTransController < ApplicationController
     def create
         @poem = PostPoem.find(params[:post_poem_id])
     	@tran = @poem.post_trans.new(post_tran_params)
+        @tran.user_id = current_user.id
 
     	if@tran.save!
         redirect_to post_poem_path(@poem), notice: "翻訳の作成に成功しました。"
@@ -24,20 +25,21 @@ class PostTransController < ApplicationController
 
     def update
     	@tran = PostTran.find(params[:id])
-    	if @tran.update(post_tran_params)
-			# redirect_to post_tran_path(@tran.id), notice: '翻訳内容が編集されました。'
-            redirect_to post_trans_path, notice: '翻訳内容が編集されました。'
+        poem = @tran.post_poem
+    	if @tran.update!(post_tran_params)
+            redirect_to post_poem_path(poem), notice: '翻訳内容が編集されました。'
     	else
-			render :index, notice: '翻訳の編集に失敗。'
+			render template: "post_poems/show", notice: '翻訳の編集に失敗。'
     	end
     end
 
     def destroy
-    	tran = PostTran.find(params[:id])
-    	if tran.delete
+        @poem = PostPoem.find(params[:post_poem_id])
+        @tran = @poem.post_trans.find(params[:id])
+    	if tran.destroy
     	redirect_to post_trans_path, notice: '翻訳は削除されました。'
     	else
-    		render :index, notice: '翻訳の削除に失敗。'
+    		render template: "post_poems/show", notice: '翻訳の削除に失敗。'
     	end
     end
 

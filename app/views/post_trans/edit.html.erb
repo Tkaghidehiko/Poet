@@ -1,14 +1,5 @@
-
-               <%= @song.song_name %>
-
-
-               <%= @poem.poem %>
-
-
-
-
-
-                <%= form_for [@poem, @tran], method: :post do |f| %>
+                  <h1>編集</h1>
+                <%= form_for @tran, method: :patch do |f| %>
                     <% if @tran.errors.any? %>
                       <div id="error_explanation">
                         <h3><%= pluralize(@tran.errors.count, "error") %> invalidated your post.</h3>
@@ -22,7 +13,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group has-icon">
-                        <h5>訳詩</h5>
+                        <h5>訳・編集</h5>
                           <%= f.text_area :song_translate, size: "36" %>
                         </div>
                       </div>
@@ -32,23 +23,4 @@
                         <%= f.submit "翻訳登録", class: "btn btn-lg btn-primary btn-base-1 mt-20" %>
                       </div>
                     </div>
-                <% end %>
-
-
-                <% @poem.post_trans.each do |tran| %>
-                    <%= tran.song_translate %>
-
-                    <% if tran.user_id == current_user.id  %>
-
-                        <%= link_to "編集", edit_post_tran_path(tran) %>
-
-                        <%= link_to "削除", post_poem_path(@poem),
-                         method: :delete,
-                         class: 'command',
-                         data: { confirm: 'sure?'} %>
-
-                    <% end %>
-
-                <br>
-
                 <% end %>
