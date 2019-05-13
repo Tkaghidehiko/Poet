@@ -9,8 +9,8 @@ class PostPoemsController < ApplicationController
     def show
         @song = Song.find(params[:id])
         @poem = PostPoem.find(params[:id])
-        # @tran = PostTran.new
         @tran = @poem.post_trans.new
+        @trans = @poem.post_trans.all
     end
 
     def edit
@@ -28,12 +28,19 @@ class PostPoemsController < ApplicationController
     end
 
     def destroy
-    	poem = PostPoem.find(params[:id])
-    	if poem.delete
-    	redirect_to post_poems_path, notice: '歌詞は削除されました。'
-    	else
-    		render :index, notice: '歌詞の削除に失敗。'
-    	end
+        @song = Song.find(params[:id])
+        @poem = PostPoem.find(params[:id])
+        tran = @poem.post_trans
+        tran.user_id = tran.user.id
+        # .find(params[:id])
+        if tran.destroy
+        redirect_to post_trans_path, notice: '翻訳は削除されました。'
+        else
+            @song = Song.find(params[:id])
+            @poem = PostPoem.find(params[:id])
+            @tran = @poem.post_trans.new
+            render template: "post_poems/show", notice: '翻訳の削除に失敗。'
+        end
     end
 
         private
@@ -46,5 +53,6 @@ class PostPoemsController < ApplicationController
     def post_poem_params
         params.require(:post_poem).permit(:id, :poem, :song_id, :_destroy,
                 post_trans_attributes: [:id, :post_poem_id, :song_translate, :_destroy])
+    end
 
 end
