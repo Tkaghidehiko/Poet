@@ -1,6 +1,6 @@
 class PostTran < ApplicationRecord
-	belongs_to :post_poem, foreign_key: 'post_poem_id'
-	belongs_to :user, foreign_key: 'user_id'
+	belongs_to :post_poem, optional: true
+	belongs_to :user, optional: true
 
 	has_many :favorites, dependent: :destroy
 end

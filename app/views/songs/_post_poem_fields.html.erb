@@ -1,8 +1,10 @@
 
+
+
  <div class="nested-fields well well-compact">
   <div class="form-group">
-    <%= f.label :post_poem, "センテンス" %>
-    <%= f.number_field :post_poem %><br>
+    <%= f.label :poem, "センテンス" %>
+    <%= f.text_area :poem %><br>
     <%= link_to_remove_association "remove poem", f %>
   </div>
 </div>
