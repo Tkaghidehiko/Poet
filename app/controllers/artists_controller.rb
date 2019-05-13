@@ -3,12 +3,15 @@ class ArtistsController < ApplicationController
 
     def index
     	@artists = Artist.all.order(created_at: :desc)
-        @search = Artist.ransack(params[:q])
-        @results = @search.result
+
+        @search_a = Artist.ransack(params[:q])
+        @search_artists = @search_a.result.page(params[:page])
     end
 
     def new
         @artist = Artist.new
+        @song = @artist.songs.build
+        @poem = @song.post_poems.build
     end
 
     def create

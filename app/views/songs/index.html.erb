@@ -7,8 +7,15 @@
  <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<% if @results.any? %>
- <% @results.each do |result| %>
+<% if @search_songs.any? %>
+ <% @search_songs.each do |result| %>
    <p><%= result.song_name %></p>
  <% end %>
 <% end %>
+
+<!-- %h2= page_entries_info @data
+= paginate @data -->
+<h2>
+	<%= page_entries_info @serch_songs, class: "pagenate" %>
+
+</h2>

@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
 
 	def set_search
 	  #@search = Article.search(params[:q])
-	  @search = Artist.ransack(params[:q]) #ransackメソッド推奨
-	  @search_artists = @search.result.page(params[:page])
+	  @search_a = Artist.ransack(params[:q]) #ransackメソッド推奨
+	  @search_artists = @search_a.result.page(params[:page])
 	end
 
 
