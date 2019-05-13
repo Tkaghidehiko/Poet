@@ -1,0 +1,14 @@
+<%= search_form_for @search do |f| %>
+ <div class="form-group">
+<!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+   <%= f.label :artist_name_cont, "Name" %>
+   <%= f.search_field :artist_name_cont, class: "form-control" %>
+ </div>
+ <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<% if @results.any? %>
+ <% @results.each do |result| %>
+   <p><%= result.artist_name %></p>
+ <% end %>
+<% end %>
