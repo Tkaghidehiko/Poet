@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+				<table class="table">
+					<thead class="text-center">
+						<tr>
+							<th class="text-center">Latest Posts</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<% if @songs.present? %>
+							<% @songs.each do |song| %>
+								<tr>
+									<td class="border-bottom "><%= link_to song_path(song.id), class: "song_#{song.id}" do %>
+										<%= song.song_name %>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>

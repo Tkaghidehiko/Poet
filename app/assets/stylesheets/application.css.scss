@@ -1,1 +1,162 @@
 @import "bootstrap";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+a:visited { color:gray; text-decoration:none }
+}
+
+
+/*メイン*/
+.main-visual {
+  width: 100%;
+  height: 400px;
+  background-image: image-url("t_r.png");
+  background-size: cover; /* 背景画像の縦横比を維持したまま背景の表示領域を覆うように表示 */
+  background-position: center; /* 背景画像を中央に配置 */
+  opacity: 0.7;
+}
+/*メイン*/
+
+
+
+h6 {
+	margin: 0px 0px 0px;
+}
+
+.table {
+	margin-top: 344px;
+}
+
+.table-2 {
+	margin-top: -135px;
+}
+
+
+/* ＜ 見出し */
+
+.msr_h105 {
+  border-bottom:1px solid #999999;
+  color: #66FFCC;
+  font-size: 24px;
+  margin: 0 0 0px;
+  padding: 0px 0px 8px 25px;
+}
+
+/* 見出し ＞ */
+
+/* ＜ ナビ-パンくず */
+
+RESULTHTMLCSS
+コピー
+.msr_bread05 li {
+  display:inline-block;
+  font-size: 14px;
+}
+.msr_bread05 li a {
+  color: #333333;
+  display:inline-block;
+  padding:8px 0;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+}
+.msr_bread05 li a:hover{
+  opacity: 0.6;
+}
+/* 矢印 */
+.msr_bread05 li:after {
+  content: "";
+  display: inline-block;
+  margin: 0 8px;
+  height: 6px;
+  border-top: 1px solid #999999;
+  border-right: 1px solid #999999;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  vertical-align: middle;
+  width: 6px;
+}
+.msr_bread05 li:last-child:after {
+  display:none;
+}
+
+/* ナビ-パンくず ＞ */
+
+
+
+/* ＜ フローチャート */
+.msr_flow02 {
+  color: #000000;
+  list-style: none;
+  overflow: hidden;
+  padding-top: 20px;
+}
+.msr_flow02 li {
+  background-color: #1B73BA;
+  line-height: 60px;
+  color: #FFFFFF;
+  display: block;
+  float: left;
+  font-size: 13px;
+  min-width: 100px;
+  padding: 0 10px 0 40px;
+  text-align: center;
+  text-decoration: none;
+}
+.msr_flow02 li:first-child {
+  padding-left: 20px;
+}
+
+/* 三角形下部 */
+.msr_flow02 li::after {
+  background-color: #1B73BA;
+  border-right: 1px solid #FFFFFF;
+  content: " ";
+  display: block;
+  height: 30px;
+  margin-left: auto;
+  margin-right: -30px;
+  margin-top: -30px;
+  position: relative;
+  transform: skew(-30deg);
+  -o-transform: skew(-30deg);
+  -ms-transform: skew(-30deg);
+  -moz-transform: skew(-30deg);
+  -webkit-transform: skew(-30deg);
+  width: 30px;
+}
+
+/* 三角形上部 */
+.msr_flow02 li::before {
+  background-color: #1B73BA;
+  border-right: 1px solid #FFFFFF;
+  content: " ";
+  display: block;
+  float: right;
+  height: 30px;
+  margin-bottom: -30px;
+  margin-left: auto;
+  margin-right: -30px;
+  transform: skew(30deg);
+  -o-transform: skew(30deg);
+  -ms-transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -webkit-transform: skew(30deg);
+  width: 30px;
+}
+
+/* 右端の設定 */
+.msr_flow02 .active {
+  background-color: #17619C;
+  color: #FFFFFF;
+}
+.msr_flow02 .active::before, .msr_flow02 .active::after {
+  background-color: #17619C;
+}
+/* フローチャート ＞ */

@@ -11,14 +11,15 @@
 
   <body>
 
-<header>
-  Trans Poet
-</header>
+<!-- background-image -->
+<div class="main-visual">
+  <div class="visual">
+
 <!-- アクセス制限 -->
         <!-- ログイン状態 -->
       <% if user_signed_in? %>
 
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <nav class="navbar navbar-expand-lg navbar-light ">
                 <!-- <a class="navbar-brand">Trans Poemer</a> -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
                   <span class="navbar-toggler-icon"></span>
@@ -26,39 +27,37 @@
 
 
                 <div class="collapse navbar-collapse" id="Navber">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <%= link_to " News", root_path, class: "nav-link" %><span class="sr-only">(現位置)</span>
+                  <ul class="navbar-nav mr-auto msr_bread05">
+                    <li class="nav-item ">
+                      <%= link_to " News", root_path, class: "nav-link" %>
                     </li>
 
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="#">マイメニュー</a>
-                    </li> -->
 
                     <li class="nav-item ">
                         <%= link_to "歌詞投稿", new_artist_path, class: "nav-link" %>
                     </li>
 
-<!--                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        検索
-                      </a>
+                    <li class="nav-item ">
+                        <%= link_to "Search", artists_path, class: "nav-link" %>
+                    </li>
 
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">アーティスト</a>
-                        <%#= link_to "Artist", artists_path, class: "dropdown-item" %>
-                      </div>
-                    </li> -->
+                    <li class="nav-item ">
+                        <%= link_to "Log out", destroy_user_session_path, class: "nav-link" %>
+                    </li>
+
+
                   </ul>
 
           <!-- 検索フォーム -->
                   <!-- <form class="form-inline my-2 my-lg-0"> -->
-                    <%= search_form_for @search_a, url: artists_path, :html => {:class => "form-inline my-2 my-lg-0"} do |f| %>
-                    <dt><%= f.text_field :artist_name_cont ,placeholder: '「アーティスト名」を入力...', class: "form-control mr-sm-2" %></dt>
-                    <dd><%= f.submit ("検索") , class: 'btn btn-outline-success my-2 my-sm-0'%></dd>
-                    <% end %>
-          <!-- 検索フォーム -->
 
+<!--                     <%#= search_form_for @search_a, url: artists_path, :html => {:class => "form-inline my-2 my-lg-0"} do |f| %>
+                    <dt><%#= f.text_field :artist_name_cont ,placeholder: '「アーティスト名」を入力...', class: "form-control mr-sm-2" %></dt>
+                    <dd><%#= f.submit ("検索") , class: 'btn btn-outline-success my-2 my-sm-0'%></dd>
+                    <%# end %> -->
+
+          <!-- 検索フォーム -->
+                      <h6>TRANS WRITE</h6>
                 </div>
               </nav>
 
@@ -112,13 +111,15 @@
                     <dd><%= f.submit ("検索") , class: 'btn btn-outline-success my-2 my-sm-0'%></dd>
                     <% end %>
           <!-- 検索フォーム -->
-
+                  </div>
                 </div>
               </nav>
 
+
       <% end %>
 <!-- アクセス制限 -->
-
+</div>
+<!-- background-image -->
 
 
 

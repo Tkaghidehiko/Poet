@@ -1,27 +1,86 @@
+
+<ul class="msr_flow02">
+  <li><%= link_to "Artists", artists_path, class: "text-color-white" %></li>
+  <li class="active">Songs</li>
+</ul>
+
+
+
+
+
 <%= search_form_for @search_s,:url => {:action => :index} do |f| %>
- <div class="form-group">
+  <div class="form-row ml-5 mb-3">
+ 	<div class="col-md-3 offset-md-4">
 <!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
-   <%= f.label :song_name_cont, "Name" %>
-   <%= f.search_field :song_name_cont, class: "form-control" %>
- </div>
- <div class="actions"><%= f.submit "Search" %></div>
+   <%= f.search_field :song_name_cont, placeholder:"曲名", class: "form-control" %>
+ 	</div>
+ <%= f.submit "Search", class: "btn btn-sm btn-outline-dark btn-base-1 mt-20" %>
+  </div>
 <% end %>
 
-			<% if @search_songs.any? %>
-			 <% @search_songs.each do |result| %>
 
-				 <%= link_to song_path(result.id) do %>
-				   <p><%= result.song_name %></p>
-				   <% end %>
 
-			 <% end %>
-			<% end %>
+
+
+
+
+
+
+<!-- テーブル -->
+<div class="table-2">
+			<table class="table">
+					<thead>
+						<tr>
+							<!-- <th></th> -->
+							<th class="text-center">Song Title</th>
+<!-- 							<th></th>
+							<th></th>
+							<th></th>
+							<th></th> -->
+						</tr>
+					</thead>
+
+					<tbody>
+
+					<% if @search_songs.any? %>
+						<% @search_songs.each do |result| %>
+
+
+							<tr class="border-bottom">
+
+
+							   	<td class="text-center">
+								<%= link_to song_path(result.id) do %>
+								<h6><%= result.song_name %></h6>
+								<% end %>
+							   	</td>
+
+							</tr>
+
+
+						<% end %>
+					<% end %>
+					</tbody>
+			</table>
+</div>
+<!-- テーブル -->
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- %h2= page_entries_info @data
 = paginate @data -->
-<h5>
+<h4>
 
 	<%= page_entries_info @search_songs %>
+</h4>
+<%= paginate @search_songs, class: "paginate" %>
 
-
-</h5>

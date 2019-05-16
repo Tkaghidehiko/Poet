@@ -1,5 +1,8 @@
 class SongsController < ApplicationController
 
+    def top
+        @songs = Song.all.order(created_at: :desc)
+    end
 
     def index
         @artist = Artist.find(params[:artist_id])
