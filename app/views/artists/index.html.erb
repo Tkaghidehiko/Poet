@@ -1,21 +1,75 @@
-<%= search_form_for @search do |f| %>
- <div class="form-group">
+
+<ul class="msr_flow02">
+  <li class="active">Artists</li>
+</ul>
+
+
+
+
+
+<%= search_form_for @search_a do |f| %>
+ <div class="form-row ml-5 mb-3">
+ 	<div class="col-md-3 offset-md-4">
 <!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
-   <%= f.label :artist_name_cont, "Name" %>
-   <%= f.search_field :artist_name_cont, class: "form-control" %>
+   <%= f.search_field :artist_name_cont, placeholder:"アーティスト名", class: "form-control" %>
+	</div>
+ <%= f.submit "Search", class: "btn btn-sm btn-outline-dark btn-base-1 mt-20" %>
  </div>
- <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<% if @search_artists.any? %>
- <% @search_artists.each do |result| %>
-   <p><%= result.artist_name %></p>
- <% end %>
-<% end %>
+
+<!-- テーブル -->
+<div class="table-2">
+			<table class="table">
+					<thead>
+						<tr>
+							<th class="text-center">Artist</th>
+<!-- 							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+ -->						</tr>
+					</thead>
+
+					<tbody>
+
+
+
+			<% if @search_artists.any? %>
+			 <% @search_artists.each do |result| %>
+
+
+
+
+
+						<tr class="border-bottom">
+<!-- 							<td></td> -->
+
+							<td class="text-center">
+								<%= link_to artist_songs_path(result.id) do %>
+
+							   <h6><%= result.artist_name %></h6>
+
+							   <% end %>
+							</td>
+
+<!-- 							<td></td>
+							<td></td>
+							<td></td> -->
+
+						</tr>
+					<% end %>
+					<% end %>
+					</tbody>
+				</table>
+</div>
+<!-- テーブル -->
+
 
 <!-- %h2= page_entries_info @data
 = paginate @data -->
-<h2>
-	<%= page_entries_info @serch_artists, class: "pagenate" %>
+<h4>
+	<%= page_entries_info @search_artists %>
+</h4>
 
-</h2>
+<%= paginate @search_artists, class: "paginate" %>
