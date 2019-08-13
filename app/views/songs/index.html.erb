@@ -1,25 +1,26 @@
 
-<ul class="msr_flow02">
-  <li><%= link_to "Artists", artists_path, class: "text-color-white" %></li>
-  <li class="active">Songs</li>
-</ul>
+
+	<ul class="msr_flow02">
+	  <li><%= link_to "Artists", artists_path, class: "text-color-white" %></li>
+	  <li class="active">Songs</li>
+	  <%= search_form_for @search_s,:url => {:action => :index} do |f| %>
+		  <div class="form-row ml-5 mb-3">
+		 	<div class="col-md-3 offset-md-4">
+		<!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+		   <%= f.search_field :song_name_cont, placeholder:"曲名", class: "form-control" %>
+		 	</div>
+		 <%= f.submit "Search", class: "btn btn-sm btn-outline-dark btn-base-1 mt-20" %>
+		  </div>
+		<% end %>
+	</ul>
 
 
 
 
 
-<%= search_form_for @search_s,:url => {:action => :index} do |f| %>
-  <div class="form-row ml-5 mb-3">
- 	<div class="col-md-3 offset-md-4">
-<!-- 　　#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
-   <%= f.search_field :song_name_cont, placeholder:"曲名", class: "form-control" %>
- 	</div>
- <%= f.submit "Search", class: "btn btn-sm btn-outline-dark btn-base-1 mt-20" %>
-  </div>
-<% end %>
 
-
-
+<div class="main-visual">
+</div>
 
 
 
